@@ -1,0 +1,39 @@
+drop table if exists `members`;
+create table `members`(
+	memid varchar(9) not null COMMENT '회원ID' PRIMARY KEY,
+	memname varchar(20) not null COMMENT '회원명',
+	passwd varchar(128) null default null COMMENT '비밀번호',
+	passwdmdt DATETIME null default null COMMENT '비밀번호변경일시',
+	jumin varchar(64) null default null COMMENT '주민등록번호',
+	addr varchar(100) null default null COMMENT '주소',
+	birthday DATE null default null COMMENT '생년월일',
+	jobcd CHAR(1) null default null COMMENT '직업코드',
+	mileage DECIMAL(7, 0) null default 0 COMMENT '마일리지',
+	stat enum('Y', 'N') not null default 'Y' COMMENT '상태',
+	enterdtm DATETIME not null default current_timestamp() COMMENT '가입일시',
+	leavedtm DATETIME null default null COMMENT '탈퇴일시'
+);
+
+
+
+
+CREATE TABLE `member` (
+  `memid` varchar(9) NOT NULL,
+  `idx` varchar(8) NOT NULL,
+  `userID` varchar(20) NOT NULL COMMENT '아이디',
+  `userNM` varchar(50) NOT NULL COMMENT '성명',
+  `passwd` varchar(90) NOT NULL COMMENT '비밀번호',
+  `mobileNO` varchar(60) DEFAULT NULL COMMENT '휴대폰번호',
+  `email` varchar(56) DEFAULT NULL COMMENT '이메일',
+  `regdate` varchar(12) DEFAULT NULL COMMENT '가입일자',
+  `regtime` varchar(10) DEFAULT NULL COMMENT '가입시간',
+  `access_date` date DEFAULT NULL COMMENT '최근접속일자',
+  constraint idx_pk PRIMARY KEY(idx)
+);
+
+
+
+select * from member 
+
+insert into member
+values('car1', '1', 'asd', '이순신','123123', '010-4564-7987', 'asd@naver.com', '2023-01-01', '09:00', '2023-02-01');
