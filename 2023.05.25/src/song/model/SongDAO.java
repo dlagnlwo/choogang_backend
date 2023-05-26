@@ -1,4 +1,4 @@
-package song.app;
+package song.model;
 
 import static song.util.MyIO.p;
 import static song.util.MyIO.pl;
@@ -9,41 +9,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import song.model.SongDAO;
-import song.model.SongDTO;
 
-public class SongDAODemoApp {
+//Song테이블과 JDBC로 SQL실행 관리 클래스
+public class SongDAO {
+	//멤버변수(전역변수)
+	Connection conn;
+	Statement stmt;
+	ResultSet rs;
+	SongDTO songdto;
 	
-	public static void main(String[] args) {
-			SongDAO songdao = new SongDAO();
-			Connection con = songdao.getConn();
-//			Connection con = new SongDAO().getConn();
-			String insertSql = 	"""
-					insert into song
-					values (107, '퀸카', '', '여자아이들');
-					""";
-//			songdao.insertSong(con, insertSql);
-//			----------------------------------------------
-			String deleteSql = 	"""
-					delete from song
-					where id = 107;
-					""";
-//			songdao.deleteSong(con, deleteSql);
-//			----------------------------------------------
-			String updateSql = 	"""
-					update song set song_name = '좋은날'
-					where song_name = '하루끝';
-					""";
-//			songdao.updateSong(con, updateSql);
-//			----------------------------------------------
-//			selectSongOne(con);
-//			----------------------------------------------
-			String sql = "select * from `muse`.`song`;";
-			songdao.selectSong(con, sql);
-			songdao.close(con);
+	//생성자
+	public SongDAO(){
+		this.conn = null;
+		this.stmt = null;
+		this.rs = null;
 	}
 	
-	public static Connection getConn() {
+	//메소드
+	public Connection getConn() {
 		//conn은 실행되기 전에 반드시 초기화해야함.
 		//초기화 = 0에 가장 가까운 값으로 초기화
 		Connection conn = null;
@@ -69,8 +52,7 @@ public class SongDAODemoApp {
 		}
 		return conn;
 	}
-	
-	public static void close(ResultSet rs, Statement stmt, Connection conn) {
+	public void close(ResultSet rs, Statement stmt, Connection conn) {
 		//ResultSet 닫기
 		try {
 			if(rs != null) {
@@ -96,7 +78,7 @@ public class SongDAODemoApp {
 			se.printStackTrace();
 		}
 	}
-	public static void close(Statement stmt, Connection conn) {
+	public void close(Statement stmt, Connection conn) {
 		//stmt닫기
 		try {
 			if(stmt != null) {
@@ -114,7 +96,7 @@ public class SongDAODemoApp {
 			se.printStackTrace();
 		}
 	}
-	public static void close(Connection conn) {
+	public void close(Connection conn) {
 		try {
 			if(conn != null) {
 				conn.close();
@@ -132,54 +114,7 @@ public class SongDAODemoApp {
 		}
 	}
 	
-	//select문 넣기
-	public static void selectSongOne(Connection conn) {
-		Statement stmt = null;
-		ResultSet rs = null;
-		boolean tf = true;
-						
-		try {
-			String sql = "SELECT * FROM song;";
-			stmt = conn.createStatement(); 
-			rs = stmt.executeQuery(sql);
-
-			//rs.next() --> read-only방식
-			//즉, 읽기 전용이라는 뜻
-			//레코드가 있을 때
-			
-			if(tf) {
-				while (rs.next()) {
-					int id = rs.getInt("id");
-					String song_name = rs.getString("song_name");
-					String song_contents = rs.getString("song_contents");
-					String singer_name = rs.getString("singer_name");
-					
-					SongDTO songdto = new SongDTO(id, song_name, song_contents, singer_name);
-					songdto.setId(id);
-					songdto.setSong_name(song_name);
-					songdto.setSong_contents(song_contents);					
-					songdto.setSinger_name(singer_name);
-					
-					
-					p("노래ID : " + songdto.getId() + " || " 
-					+ "노래이름 : " + songdto.getSong_name()
-					+ " || " + "곡 내용 : " + songdto.getSong_contents()
-					+ " || " + "가수 이름 : " + songdto.getSinger_name() + "\n");
-				}
-			//레코드가 없을 때
-			}else {
-				pl("자료가 없습니다.");
-			}
-
-		}catch(SQLException se) {
-			se.printStackTrace();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
-	
-	public static ResultSet selectSong(Connection conn, String selectSql) {
+	public ResultSet selectSong(Connection conn, String selectSql) {
 		ResultSet rs = null;
 		Statement stmt = null;
 		try {
@@ -216,7 +151,7 @@ public class SongDAODemoApp {
 		}
 		return rs;
 	}
-	public static void deleteSong(Connection conn, String deleteSql) {
+	public void deleteSong(Connection conn, String deleteSql) {
 		Statement stmt = null;
 		
 		try {	
@@ -236,7 +171,7 @@ public class SongDAODemoApp {
 		}
 		
 	}
-	public static void insertSong(Connection conn, String insertSql) {
+	public void insertSong(Connection conn, String insertSql) {
 			Statement stmt = null;
 		try {
 			
@@ -255,10 +190,9 @@ public class SongDAODemoApp {
 			e.printStackTrace();
 		}
 	}
-	public static void updateSong(Connection conn,String updateSql) {
+	public void updateSong(Connection conn,String updateSql) {
 		Statement stmt = null;
 		try {		
-		
 			stmt = conn.createStatement();
 			int updateCount = stmt.executeUpdate(updateSql);
 			
@@ -267,7 +201,6 @@ public class SongDAODemoApp {
 				pl("" + updateCount + "개의 자료를 수정했습니다.");
 				pl("");
 			}
-			
 		}catch (SQLException se) {
 			se.printStackTrace();
 		}catch (Exception e) {

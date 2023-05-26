@@ -29,20 +29,7 @@ public class SongDAO implements Connectionable, Insertable, Updatable, Deletable
 	
 	@Override
 	public void seleceSong() {
-		
-//		String selectSql = 	"""
-//							select * from song;
-//							""";
-//		
-//		
-//		try {
-//			while(rs.next()) {
-//				String song_name = rs.getString("song_name");
-//			}
-//		}catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-		
+
 	}
 
 	@Override
