@@ -57,8 +57,9 @@ public class Add extends HttpServlet {
 		p(msg + "\n");
 	}
 	private int add() {
-		int sum = 0;
-		for (int i = a; i <= b; i++) {
+		//var은 유지보수 측면에서 유용하기 때문에 var을 사용하는것이 좋음.
+		var sum = 0;
+		for (var i = a; i <= b; i++) {
 			sum += i;
 		}
 		return sum;

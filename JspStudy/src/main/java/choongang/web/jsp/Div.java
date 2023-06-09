@@ -29,7 +29,9 @@ public class Div extends HttpServlet {
     	response.setCharacterEncoding("utf-8");
     	PrintWriter out = response.getWriter();
     	//html에서 요청(클라이언트)하니까 request가 되어야 함.
-    	String first = request.getParameter("first");
+    	
+    	//div.jsp에서 input에 name="first"를 갖고왔음.
+    	String first = request.getParameter("first"); 
     	String last = request.getParameter("last");
     	double result = Integer.parseInt(first) / Integer.parseInt(last);
     	

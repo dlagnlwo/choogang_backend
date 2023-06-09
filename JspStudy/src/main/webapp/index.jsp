@@ -48,7 +48,15 @@ index라는 이름을 가지고 확장자가 html 또는 htm을 정적시작페�
 	<a href = "add.jsp">add.jsp로 이동</a></br>
 	<a href = "sub.jsp">sub.jsp로 이동</a></br>
 	<a href = "mul.jsp">mul.jsp로 이동</a></br>
-	<a href = "div.jsp">div.jsp로 이동</a></br>
-	<a href = "conn.jsp">conn.jsp로 이동</a>
+	<a href = "div.jsp">div.jsp로 이동</a>
+	
+	
+	<form action="indexServlet" method="post">
+		</br>
+		<label for="name">이름 : </label>
+		<input type="text" name="name" placeholder="이름"/>
+		<input type="submit" name="result" value="결과"/>
+	</form>
+	
 </body>
 </html>
