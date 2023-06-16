@@ -7,6 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>register.jsp 화면입니다.</h1>
+	<form action="/todo/register2" method="get">
+		Get : 
+		<input type="text" name="num1" value="1000"/>
+		<input type="text" name="num2" value="2000"/>
+		<button type="submit">get등록 처리</button>
+	</form>
+	<br />
+	<form action="/todo/register2" method="post">
+		Post: 
+		<input type="text" name="num1" value="1000"/>
+		<input type="text" name="num2" value="2000"/>
+		<button type="submit">post등록 처리</button>
+	</form>
 </body>
 </html>

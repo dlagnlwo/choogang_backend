@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name="todoRegisterController", urlPatterns = "/todo/register")
-public class TodoRegisterController extends HttpServlet{
-	//서블릿이 요청한 view jsp 페이지를 대신 실행한다.
-	private void fowardJSP(	String jspFilePath,
+@WebServlet(name = "todoRegisterController2", urlPatterns = "/todo/register2")
+public class TodoRegisterController2 extends HttpServlet {
+	private void forwardJSP(String jspFilePath, 
 							HttpServletRequest req,
 							HttpServletResponse res) throws ServletException, IOException {
 		RequestDispatcher dispatcher = 
@@ -21,22 +20,17 @@ public class TodoRegisterController extends HttpServlet{
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		System.out.println("TodoRegisterController // doGet()");
-		System.out.println("Method " + req.getMethod() + "입력화면을 보여줍니다");
-		//get방식은 주소로 호출 post는 res.sendRedirect로 호출
-		String jspPath = "/WEB-INF/todo/register.jsp";
-		
-		//실제 jsp 실행결과를 마지막으로 처리하는 것이 서블릿임을 확인
-		//확인용 tmpReq와 tmpRes객체변수를 선언
-		HttpServletRequest tmpReq = req;
-		HttpServletResponse tmpRes = res;
-		fowardJSP(jspPath, tmpReq, tmpRes);
+		System.out.println("TodoRegisterController2 // doGet()");
+		System.out.println("Method " + req.getMethod());
+		String JspPath = "/WEB-INF/todo/result.jsp";
+		forwardJSP(JspPath, req, res);
 	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		System.out.println("TodoRegisterController2 // doPost()");
-		System.out.println("Method : " + req.getMethod());
+		System.out.println("Method " + req.getMethod());
 		String JspPath = "/WEB-INF/todo/result.jsp";
-		fowardJSP(JspPath, req, res);
+		forwardJSP(JspPath, req, res);
 	}
 }
