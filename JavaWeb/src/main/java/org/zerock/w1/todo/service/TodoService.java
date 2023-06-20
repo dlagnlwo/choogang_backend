@@ -8,12 +8,13 @@ import java.util.stream.IntStream;
 import org.zerock.w1.todo.dto.TodoDTO;
 //enum타입으로 클래스를 작성하면 객체를 정해진 수만큼만 생성할 수 있다.
 public enum TodoService { 
-	//싱글톤 패턴
-	INSTANCE; 
+	//싱글톤 패턴 
+	INSTANCE;
 	
-	public void register(TodoDTO todoDTO) {
-		System.out.println("DEBUG " + todoDTO);
+	public void log(TodoDTO todoDTO) {
+		System.out.println("DEBUG... " + todoDTO);
 	}
+	
 	
 	//'<>'는 Generic(제네릭)이라고 함.
 	//제네릭은 데이터 처리하기의 일반화
@@ -28,12 +29,20 @@ public enum TodoService {
 		//그렇기때문에 스트림을 사용하여 반복시킴
 		List<TodoDTO> todoDTOS = IntStream.range(0, 10).mapToObj(i -> {
 			TodoDTO dto = new TodoDTO();
-			dto.setTno((long)i); //멤버변수가 long형이므로 long으로 강제형변환
+			dto.setTno((long)i);
 			dto.setTitle("Todo..." + i);
-			dto.setDueDate(LocalDate.now()); //생성한 시점의 날짜
+			dto.setDueDate(LocalDate.now());
 			return dto;
-		}).collect(Collectors.toList());//스트림을 List로 바꿔줌
-		
+		}).collect(Collectors.toList());
 		return todoDTOS;
 	}
+	public TodoDTO get(Long tno) {
+		TodoDTO dto = new TodoDTO();
+		dto.setTno(tno);
+		dto.setTitle("Sample Todo");
+		dto.setDueDate(LocalDate.now());
+		dto.setFinished(true);
+		
+		return dto;
+	}	
 }

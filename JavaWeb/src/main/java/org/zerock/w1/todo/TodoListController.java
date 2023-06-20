@@ -20,11 +20,11 @@ public class TodoListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		System.out.println("/todo/list");
-
+		
 		//INSTANCE -> 상수
 		List<TodoDTO> dto = TodoService.INSTANCE.getList();
 		//list.jsp에서 ${list}로 list를 불러오면 됨
-		req.setAttribute("list", dto);
+		req.setAttribute("list", dto);//이름은 list 값은 dto
 		String jspPath = "/WEB-INF/todo/list.jsp";
 		forward(jspPath, req, res);
 		

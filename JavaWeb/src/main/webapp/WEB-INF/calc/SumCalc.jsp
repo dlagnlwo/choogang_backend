@@ -5,16 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-	div {
-		font-size: 2rem;
-	}
-</style>
 </head>
 <body>
-	<div>${dto.tno}</div>
-	<div>${dto.title}</div>
-	<div>${dto.dueDate}</div>
-	<div>${dto.finished}</div>
+
+	<h1>더하기 : ${Integer.parseInt(param.num1) +
+			Integer.parseInt(param.num2) } </h1>
+	
 </body>
 </html>
