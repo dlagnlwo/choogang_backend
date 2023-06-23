@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.zerock.w1.todo.dto.TodoDTO;
 import org.zerock.w1.todo.service.TodoService;
 
-@WebServlet(name = "todoReadController", urlPatterns = "/todo/read")
+@WebServlet(name = "todoReadControllerw1", urlPatterns = "/todo/readw1")
 public class TodoReadController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

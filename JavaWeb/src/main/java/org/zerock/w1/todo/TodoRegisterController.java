@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name="todoRegisterController", urlPatterns = "/todo/register")
+@WebServlet(name="todoRegisterControllerw1", urlPatterns = "/todo/registerw1")
 public class TodoRegisterController extends HttpServlet{
 	//서블릿이 요청한 view jsp 페이지를 대신 실행한다.
 	private void fowardJSP(	String jspFilePath,

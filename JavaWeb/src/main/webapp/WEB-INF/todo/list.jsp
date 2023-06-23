@@ -10,11 +10,11 @@
 <body>
 	<form action="/todo/register" method="get">
 		<ul>
-			<c:forEach var="dto" items="${list}">
+			<c:forEach var="dto" items="${dtoList}">
 				<li>${dto}</li>
-	        </c:forEach>
-	    </ul><br />
-    	<button type="submit">입력화면으로</button>
-	</form> 
+			</c:forEach>
+		</ul><br />
+		   	<button type="submit">입력화면으로</button>
+    </form>
 </body>
 </html>

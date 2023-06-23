@@ -13,14 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import org.zerock.w1.todo.dto.TodoDTO;
 import org.zerock.w1.todo.service.TodoService;
 
+import lombok.extern.log4j.Log4j2;
+
 //get방식 목록 화면 
-@WebServlet(name="todoListController", urlPatterns = "/todo/list")
+@WebServlet(name="todoListControllerw1", urlPatterns = "/todo/listw1")
+@Log4j2
 public class TodoListController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		System.out.println("/todo/list");
-		
+		log.info("todoListContorllerw1");
 		//INSTANCE -> 상수
 		List<TodoDTO> dto = TodoService.INSTANCE.getList();
 		//list.jsp에서 ${list}로 list를 불러오면 됨

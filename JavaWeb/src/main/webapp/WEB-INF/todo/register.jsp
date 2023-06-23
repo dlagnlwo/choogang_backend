@@ -7,18 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/todo/register2" method="get">
-		Get : 
-		<input type="text" name="num1" value="1000"/>
-		<input type="text" name="num2" value="2000"/>
-		<button type="submit">get등록 처리</button>
-	</form>
-	<br />
-	<form action="/todo/register2" method="post">
-		Post: 
-		<input type="text" name="num1" value="1000"/>
-		<input type="text" name="num2" value="2000"/>
-		<button type="submit">post등록 처리</button>
+	<form action="/todo/register" method="post">
+		<div>
+			title : <input type="text" name="title" placeholder="내용을 입력해주세요"/>
+		</div>
+		<div>
+			Date : <input type="date" name="dueDate" id="date" value="2023-06-23">
+		</div>
+		<div>
+			<button type="reset">RESET</button>
+			<button type="submit">등록</button>
+		</div>
 	</form>
 </body>
 </html>

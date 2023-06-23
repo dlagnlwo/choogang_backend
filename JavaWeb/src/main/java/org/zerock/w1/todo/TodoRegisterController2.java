@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "todoRegisterController2", urlPatterns = "/todo/register2")
+@WebServlet(name = "todoRegisterController2w1", urlPatterns = "/todo/register2w1")
 public class TodoRegisterController2 extends HttpServlet {
 	private void forwardJSP(String jspFilePath, 
 							HttpServletRequest req,
