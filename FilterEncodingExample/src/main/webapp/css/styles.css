@@ -1,0 +1,8 @@
+@charset "UTF-8";
+/* 한글입니다. */
+.encoding {
+	text-align: center;
+	font-size: 30px;
+	color: blue;
+	border: 5px solid orange;
+}
